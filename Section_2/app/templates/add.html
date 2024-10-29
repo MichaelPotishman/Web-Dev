@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Add</h1>
+<div class="form-container">
+    <form action="" method="post" name="AssessmentForm">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.assessmenttitle }}<br>
+            {% for error in form.assessmenttitle.errors %}
+                [{{ error }}]
+            {% endfor %}  
+        </p>
+        <p>
+            {{ form.modulecode }}<br>
+            {% for error in form.modulecode.errors %}
+                [{{ error }}]
+            {% endfor %}  
+        </p>
+        <p>
+            {{ form.deadline }}<br>
+            {% for error in form.deadline.errors %}
+                [{{ error }}]
+            {% endfor %}  
+        </p>
+        <p>
+            {{ form.description }}<br>
+            {% for error in form.description.errors %}
+                [{{ error }}]
+            {% endfor %}  
+        </p>
+        <p>
+            {{ form.status }}<br>
+            {% for error in form.status.errors %}
+                [{{ error }}]
+            {% endfor %}  
+        </p>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+</div>
+
+{% endblock %}
+

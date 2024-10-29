@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="title">
+    <h1>Assessments</h1>
+</div>
+
+<div class="main-container">
+    <div class="top-container">
+        <div class="checkbox-container">
+            <label class="checkbox-label">
+                <input type="checkbox" id="completed-checkbox" onchange="updateAssessments()"
+                    {% if assessments|length == 0 %}
+                        disabled
+                    {% else %}
+                        checked
+                    {% endif %}
+                    >Completed
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="due-checkbox" onchange="updateAssessments()"
+                    {% if assessments|length == 0 %}
+                        disabled
+                    {% else %}
+                        checked
+                    {% endif %}
+                    >Due
+            </label>
+        </div>
+    </div>
+
+    <div class="bottom-container">
+        <div class="assessment-container"> 
+            <div class="card">
+                {% if assessments|length == 0 %}
+                    <div class="no-assessments">
+                        <h2>No assessments</h2>
+                    </div>
+                {% else %}
+                    <div class="assessment-items">
+                        {% for assessment in assessments %}
+                        <div class="assessment-item" data-status="{{ assessment.status }}" onclick="toggleDescription(this)">
+                            <div class="assessment-content">
+                                <div class="left-section">
+                                    <div class="assessment-title">{{ assessment.assessmenttitle }}</div>
+                                    <div class="module-code">{{ assessment.modulecode }}</div>
+                                </div>
+                                <div class="center-section">
+                                    <div class="assessment-deadline">
+                                        <p class="deadline">
+                                            {% if assessment.status == 1 %}
+                                                Completed - {{ assessment.deadline }}
+                                            {% else %}
+                                                Due: {{ assessment.deadline }}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="right-section">
+                                    <a href="{{ url_for('edit', id=assessment.id) }}" class="btn btn-secondary">Edit</a>
+
+                                    <button class="btn btn-danger">Delete</button>
+                                    <button class="btn btn-info">View</button>
+                                </div>
+                            </div>
+                            
+                            <p class="description">
+                                {{ assessment.description }}
+                            </p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="button-container">
+            <p><input type="submit" class="btn btn-primary">Save</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
