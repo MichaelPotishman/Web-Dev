@@ -1,42 +1,76 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Add</h1>
+<div class="title">
+    <h1>Add Assessment</h1>
+</div>
+
 <div class="form-container">
     <form action="" method="post" name="AssessmentForm">
         {{ form.hidden_tag() }}
-        <p>
-            {{ form.assessmenttitle }}<br>
-            {% for error in form.assessmenttitle.errors %}
-                [{{ error }}]
-            {% endfor %}  
-        </p>
-        <p>
-            {{ form.modulecode }}<br>
-            {% for error in form.modulecode.errors %}
-                [{{ error }}]
-            {% endfor %}  
-        </p>
-        <p>
-            {{ form.deadline }}<br>
-            {% for error in form.deadline.errors %}
-                [{{ error }}]
-            {% endfor %}  
-        </p>
-        <p>
-            {{ form.description }}<br>
-            {% for error in form.description.errors %}
-                [{{ error }}]
-            {% endfor %}  
-        </p>
-        <p>
-            {{ form.status }}<br>
-            {% for error in form.status.errors %}
-                [{{ error }}]
-            {% endfor %}  
-        </p>
-        <p><input type="submit" value="Submit"></p>
+
+        <div class="form-group">
+            <label for="assessment-title">Title:</label>
+            {{ form.assessmenttitle(class="form-control", id="assessment-title") }}
+            {% if form.assessmenttitle.errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.assessmenttitle.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="module-code">Module Code:</label>
+            {{ form.modulecode(class="form-control", id="module-code") }}
+            {% if form.modulecode.errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.modulecode.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="deadline">Deadline:</label>
+            {{ form.deadline(class="form-control", id="deadline", min=today.isoformat()) }}
+            {% if form.deadline.errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.deadline.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            {{ form.description(class="form-control", id="description") }}
+            {% if form.description.errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.description.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="status">Completed?</label>
+            {{ form.status(class="form-control", id="status") }}
+            {% if form.status.errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.status.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="button-container">
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
     </form>
 </div>
-
 {% endblock %}
-

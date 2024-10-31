@@ -8,7 +8,24 @@
   width: 100%; 
   position: relative; 
 }
+.navbar-toggler-icon{
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* HTML BUILT IN */
 a{
+  color: white;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+}
+h1{
+  color: white;
+}
+label{
   color: white;
 }
 
@@ -18,19 +35,27 @@ a{
   justify-content: center;
   margin-top: 30px;
 }
+.top-description{
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-style: italic;
+}
+/* Horizontal scroll on small screens */
+@media (max-width: 1024px) {
+  .assessment-container {
+      overflow-x: auto;
+  }
+  .card {
+      max-width: 90vw;
+  }
+  .assessment-item {
+      min-width: 300px;
+      max-width: 90vw;
+  }
+}
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #121212;
-  }
-h1{
-    color: white;
-  }
-label{
-    color: white;
-  }
+
 
 
 /* CONTAINERS */
@@ -49,8 +74,15 @@ label{
 }
 .assessment-container{
   display: flex;
-  padding: 20px;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+}
+.checkbox-container input[type="checkbox"] {
+  transform: scale(1.5);
+  margin-right: 10px;
+  vertical-align: middle; 
 }
 
 /* CHECKBOX */
@@ -61,6 +93,13 @@ label{
     margin-top: 15px;
     gap: 200px;         
    }
+
+@media (max-width: 600px){
+  .checkbox-container{
+    flex-direction: column;
+    gap: 5px;
+  }
+}
    
 #completed-checkbox, #due-checkbox{
     margin-left: 20px;
@@ -70,24 +109,22 @@ label{
     margin-left: 10px; 
   }
 
-.checkbox-container input[type="checkbox"] {
-      transform: scale(1.5);
-      margin-right: 10px;
-      vertical-align: middle; 
-  }
+
 
 
 /* ASSESSMENT ITEM */
 .assessment-item{
-    color: white;
-    border-radius: 12.5px;
-    border:  2px solid black;
+    flex: 1 1 300px; 
+    min-width: 1200px;
+    max-width: 90vw; 
+    box-sizing: border-box;
     padding: 10px;
     margin: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: max-height 0.3s ease;
-    max-height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #222222;
+    color: #fff;
+    transition: height 0.5s ease;
   }
 .assessment-content{
   display: flex;
@@ -102,12 +139,10 @@ label{
   font-weight: bold;
 }
 .center-section{
-  text-align: center;
-  width: 20%;
+  width: 25%;
+  font-size: 30px;
 }
-.module-code{
-  background-color: blue;
-}
+
 .deadline{
   font-size: 0.8em;
   color: white;
@@ -152,22 +187,64 @@ label{
     border-color: #d02a2d;
   }
 .card {
-    background-color: #1e1e1e;
-    margin-top: 0px;
-    padding: 20px;
-    border: 1px solid #ffd700;
-    border-radius: 12.5px;
-    width: 100%;
-    height: 60vh;
-    overflow-y: scroll;
-  }
+  width: 100%;
+  height: 60vh;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: rgb(30,30,30);
+  border: 2px solid gold;
+  border-radius: 12.5px;
+  margin-bottom: 20px;
+
+}
 .card-title{
     font-weight: bold;
     font-size: 1.5em;
     margin-bottom: 15px;
   }
 
+.no-assessments{
+  color: white;
+  font-size: 40px;
+  font-style: italic;
+}
+
 /* FORM */
 .form-container{
-  background-color: red;
+  background-color: #222222;
+  border-radius: 12.5px;
+  border: 2px solid gold;
+  padding: 20px;
 }
+
+.save-button{
+  background-color: rgb(0, 110, 255);
+  color: white;
+  border-radius: 25px;
+  height: 50px;
+  width: 125px;
+  font-size: 20px;
+}
+.btn{
+  border: 2px solid white;
+  font-size: 1.5rem;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  font-size: 108px;
+}
+
+.edit-title{
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin-top: 30px;
+}
+
+
