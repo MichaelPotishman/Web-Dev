@@ -1,14 +1,17 @@
+// Function to toggle classname for 'assessment-item', meaning the size can enlarge to show description
 function toggleDescription(item){
     console.log('Item clicked');
     item.classList.toggle('expanded');
 }
 
+// Function to set the border colours of each assessment-item depending on its completion status
 function setColours() {
     const assessments = document.querySelectorAll('.assessment-item');
 
     // Loop through each assessment item
     assessments.forEach(assessment => {
 
+        // depeding on completion status, either add/remove words to the classlist
         if (assessment.getAttribute('data-status') == 'True'){
             assessment.classList.add('completed');
             assessment.classList.remove('due');
@@ -21,7 +24,7 @@ function setColours() {
 
 
 
-
+// Allow use of checkbox to show assessments based on completion status
 function updateAssessments() {
     // Gets the elements by their ID
     const completedCheckbox = document.getElementById('completed-checkbox');
@@ -56,7 +59,7 @@ function updateAssessments() {
     });
 }
 
-
+// Whenever window is run, this function also runs, calling the other necessary functions
 window.onload = function() {
     updateAssessments();
 }

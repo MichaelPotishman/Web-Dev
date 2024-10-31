@@ -4,15 +4,19 @@
     <h1>Add Assessment</h1>
 </div>
 
+
 <div class="form-container">
     <form action="" method="post" name="AssessmentForm">
         {{ form.hidden_tag() }}
 
+        <!-- Create a div for each input required from the user, title, module code ...-->
+        <div class="form-group">
         <div class="form-group">
             <label for="assessment-title">Title:</label>
             {{ form.assessmenttitle(class="form-control", id="assessment-title") }}
             {% if form.assessmenttitle.errors %}
-                <div class="alert alert-danger">
+                <div class="alert alert-danger" role="alert">
+                    <!-- If theres an error, inform the user-->
                     {% for error in form.assessmenttitle.errors %}
                         <p>{{ error }}</p>
                     {% endfor %}
@@ -24,7 +28,7 @@
             <label for="module-code">Module Code:</label>
             {{ form.modulecode(class="form-control", id="module-code") }}
             {% if form.modulecode.errors %}
-                <div class="alert alert-danger">
+                <div class="alert alert-danger" role="alert">
                     {% for error in form.modulecode.errors %}
                         <p>{{ error }}</p>
                     {% endfor %}
@@ -36,7 +40,7 @@
             <label for="deadline">Deadline:</label>
             {{ form.deadline(class="form-control", id="deadline", min=today.isoformat()) }}
             {% if form.deadline.errors %}
-                <div class="alert alert-danger">
+                <div class="alert alert-danger" role="alert">
                     {% for error in form.deadline.errors %}
                         <p>{{ error }}</p>
                     {% endfor %}
@@ -48,7 +52,7 @@
             <label for="description">Description:</label>
             {{ form.description(class="form-control", id="description") }}
             {% if form.description.errors %}
-                <div class="alert alert-danger">
+                <div class="alert alert-danger" role="alert">
                     {% for error in form.description.errors %}
                         <p>{{ error }}</p>
                     {% endfor %}
@@ -60,7 +64,7 @@
             <label for="status">Completed?</label>
             {{ form.status(class="form-control", id="status") }}
             {% if form.status.errors %}
-                <div class="alert alert-danger">
+                <div class="alert alert-danger" role="alert">
                     {% for error in form.status.errors %}
                         <p>{{ error }}</p>
                     {% endfor %}
@@ -69,7 +73,7 @@
         </div>
 
         <div class="button-container">
-            <button type="submit" class="btn btn-success">Save</button>
+            <button type="submit" class="btn btn-success" aria-label="Save Assessment">Save</button>
         </div>
     </form>
 </div>

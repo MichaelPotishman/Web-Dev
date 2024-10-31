@@ -41,7 +41,6 @@ label{
   color: white;
   font-style: italic;
 }
-/* Horizontal scroll on small screens */
 @media (max-width: 1024px) {
   .assessment-container {
       overflow-x: auto;
@@ -158,7 +157,7 @@ label{
 
 }
 .module-code{
-  font-size: 0.9em;
+  font-size: 1.5em;
   color: white;
 }
 .deadline{
@@ -169,6 +168,8 @@ label{
 .description{
   display: none;
   margin-top: 10px;
+  font-size: 1.5em;
+  font-style: italic;
 }
 .assessment-item.expanded{
   max-height: 300px;
